@@ -12,8 +12,11 @@ import androidx.annotation.Nullable;
 import androidx.core.app.NotificationCompat;
 
 import com.zeliot.servicemanager.R;
+import com.zeliot.servicemanager.model.ServicePackageInfo;
 import com.zeliot.servicemanager.util.Constants;
 import com.zeliot.servicemanager.util.ServiceUtil;
+
+import java.util.List;
 
 public class ServiceManager extends Service {
 
@@ -31,8 +34,14 @@ public class ServiceManager extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		createNotification();
-		ServiceUtil.startService(this, "com.zeliot.wifimanager",
-		                         "com.zeliot.wifimanager.service.WiFiHandlerService");
+
+		List<ServicePackageInfo> packageInfoList = Constants.PACKAGE_LIST;
+
+		for (int element = 0; element < packageInfoList.size(); element++) {
+			packageInfoList.get(element).setContext(this);
+		}
+
+		ServiceUtil.startMultipleServices(packageInfoList);
 		return START_NOT_STICKY;
 	}
 

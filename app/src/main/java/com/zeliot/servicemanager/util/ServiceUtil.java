@@ -23,13 +23,19 @@ public class ServiceUtil {
 
 	public static void startMultipleServices(
 			List<ServicePackageInfo> packageInfoList) {
-		new Handler(Looper.getMainLooper()).postDelayed(() -> {
+		new Handler(Looper.getMainLooper()).post(() -> {
 			for (ServicePackageInfo info : packageInfoList) {
 				Intent serviceIntent = new Intent();
 				serviceIntent.setComponent(
-						new ComponentName(info.getContext(), info.getAction()));
+						new ComponentName(info.getPackageName(),
+						                  info.getAction()));
 				info.getContext().startForegroundService(serviceIntent);
+				try {
+					Thread.sleep(100);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
 			}
-		}, 100);
+		});
 	}
 }

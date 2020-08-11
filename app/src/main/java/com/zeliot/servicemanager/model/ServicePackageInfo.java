@@ -7,27 +7,26 @@ public class ServicePackageInfo {
 	private String mPackageName;
 	private String mAction;
 
-	public Context getContext() {
-		return mContext;
+	public ServicePackageInfo(
+			String packageName, String action) {
+		mPackageName = packageName;
+		mAction = action;
 	}
 
-	public void setContext(Context mContext) {
-		this.mContext = mContext;
+	public void setContext(Context context) {
+		mContext = context;
+	}
+
+	public Context getContext() {
+		return mContext;
 	}
 
 	public String getPackageName() {
 		return mPackageName;
 	}
 
-	public void setPackageName(String mPackageName) {
-		this.mPackageName = mPackageName;
-	}
-
 	public String getAction() {
 		return mAction;
 	}
 
-	public void setAction(String mAction) {
-		this.mAction = mAction;
-	}
 }
