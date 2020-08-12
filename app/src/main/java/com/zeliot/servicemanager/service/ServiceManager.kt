@@ -23,6 +23,7 @@ class ServiceManager : Service() {
         for (element in packageInfoList.indices) {
             packageInfoList[element].context = this
         }
+
         ServiceUtil.startMultipleServices(packageInfoList)
         return START_NOT_STICKY
     }
