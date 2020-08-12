@@ -34,14 +34,15 @@ class ServiceManager : Service() {
                 .setContentTitle("Service Manager")
                 .setSmallIcon(R.drawable.ic_service_notification)
                 .setColor(resources.getColor(R.color.colorAccent))
-                .setContentText("Service Manager running")
+                .setContentText("System Service maintenance running")
                 .setTicker("OK")
+
         val notification = notificationBuilder.build()
         val notificationChannel =
                 NotificationChannel(Constants.CHANNEL_ID,
                         Constants.CHANNEL_ID,
                         NotificationManager.IMPORTANCE_DEFAULT)
-        notificationChannel.description = "Handles the Services "
+        notificationChannel.description = "Handles System Services"
         val notificationManager = getSystemService(
                 Context.NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createNotificationChannel(notificationChannel)
