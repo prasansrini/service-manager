@@ -33,7 +33,7 @@ class ServiceManager : Service() {
                 Constants.CHANNEL_ID)
                 .setContentTitle("Service Manager")
                 .setSmallIcon(R.drawable.ic_service_notification)
-                .setColor(resources.getColor(R.color.colorAccent))
+                .setColor(resources.getColor(R.color.colorAccent, this.theme))
                 .setContentText("System Service maintenance running")
                 .setTicker("OK")
 
